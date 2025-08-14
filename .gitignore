@@ -8,3 +8,9 @@ wheels/
 
 # Virtual environments
 .venv
+data/
+files/
+dataset/
+실습폴더/runs/
+실습폴더/MNIST/
+실습폴더/bing_image_downloader/
