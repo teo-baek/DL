@@ -15,3 +15,5 @@ dataset/
 실습폴더/MNIST/
 실습폴더/bing_image_downloader/
 실습폴더/cifar-10-python.tar.gz
+실습폴더/runs/
+model/
