@@ -10,7 +10,7 @@ import json
 
 app = FastAPI(title= 'ResNet34 Inference')
 
-device = 'cuda' if torch.cuda.is_available else 'cpu'
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 model = models.resnet34(pretrained= True)
 model.fc = nn.Linear(in_features=512, out_features=3, bias=True)
@@ -34,11 +34,8 @@ class response(BaseModel):
 
 @app.post("/predict", response_model= response)
 async def predict(file: UploadFile=File(...)):      # file은 키 값. 상대방이 나에게 보내는 키 값.
-    try:
-        image = Image.open(file.file)
-    except Exception:
-        raise HTTPException(status_code=400, detail="Invalid image file")
-    image.save('./dataset/test/카리나/image_7.jpg')      # 실제 현업에서는 uuid, 카운트, timestamp를 활용해서 파일명을 자동화해서 저장
+    image = Image.open(file.file)
+    image.save('../dataset/test/카리나/image_7.jpg')      # 실제 현업에서는 uuid, 카운트, timestamp를 활용해서 파일명을 자동화해서 저장
     img_tensor = transforms_infer(image).unsqueeze(0).to(device)    
     # transforms_infer로 가져온 [3, 224, 224]의 이미지를 unsqueeze로 [1, 3, 224, 224] 변환해주고 GPU로 옮겨준다.
     # 형 변환하는 과정을 넣지 않아 오류가 나는 경우가 많다.

@@ -21,6 +21,7 @@ dependencies = [
     "tensorboardx>=2.6.4",
     "torch>=2.8.0",
     "torch-summary>=1.4.5",
+    "torchsummary>=1.5.1",
     "torchvision>=0.23.0",
     "tqdm>=4.67.1",
     "uvicorn>=0.35.0",
